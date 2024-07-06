@@ -9,6 +9,7 @@ import 'package:yolo/app/app_resources.dart';
 import 'package:yolo/app/app_router.dart';
 import 'package:yolo/app/base/base_stateful.dart';
 import 'package:yolo/main.dart';
+import 'package:yolo/pages/intro_screen.dart';
 import 'package:yolo/services/navigation_service.dart';
 import 'package:yolo/services/tensorflow_service.dart';
 import 'package:yolo/view_models/home_view_model.dart';
@@ -239,11 +240,16 @@ class _HomeScreenState extends BaseStateful<HomeScreen, HomeViewModel>
       elevation: 0.0,
       centerTitle: true,
       actions: [
-        ElevatedButton(onPressed: () {}, child: const Icon(Icons.question_mark_rounded,color: Colors.white,), style: ElevatedButton.styleFrom( // styling the button
+        ElevatedButton(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => InfoScreen()));
+          },
+          style: ElevatedButton.styleFrom( // styling the button
              shape: const CircleBorder(),
              backgroundColor: Colors.green, // Button color
              foregroundColor: Colors.cyan, // Splash color
-           ),),
+           ), 
+           child: const Icon(Icons.question_mark_rounded,color: Colors.white,),),
         // PopupMenuButton<ModelType>(
         //     onSelected: (item) => handleSwitchSource(item),
         //     color: AppColors.white,
