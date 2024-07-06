@@ -129,7 +129,7 @@ class _HomeScreenState extends BaseStateful<HomeScreen, HomeViewModel>
             onPressed: handleCaptureClick,
             tooltip: "Capture",
             backgroundColor: AppColors.white,
-            child: Icon(
+            child: const Icon(
               Icons.cut_outlined,
               color: AppColors.blue,
             ),
@@ -239,86 +239,90 @@ class _HomeScreenState extends BaseStateful<HomeScreen, HomeViewModel>
       elevation: 0.0,
       centerTitle: true,
       actions: [
-        IconButton(
-            onPressed: () {
-              // _gotoRepo();
-            },
-            icon: Icon(AppIcons.linkOption, semanticLabel: 'Repo')),
-        PopupMenuButton<ModelType>(
-            onSelected: (item) => handleSwitchSource(item),
-            color: AppColors.white,
-            itemBuilder: (context) => [
-                  PopupMenuItem(
-                      enabled: !viewModel.state.isYolo(),
-                      value: ModelType.YOLO,
-                      child: Row(
-                        children: <Widget>[
-                          Icon(Icons.api,
-                              color: !viewModel.state.isYolo()
-                                  ? AppColors.black
-                                  : AppColors.grey),
-                          Text(' YOLO',
-                              style: AppTextStyles.regularTextStyle(
-                                  color: !viewModel.state.isYolo()
-                                      ? AppColors.black
-                                      : AppColors.grey)),
-                        ],
-                      )),
-                  PopupMenuItem(
-                      enabled: !viewModel.state.isSSDMobileNet(),
-                      value: ModelType.SSDMobileNet,
-                      child: Row(
-                        children: <Widget>[
-                          Icon(Icons.api,
-                              color: !viewModel.state.isSSDMobileNet()
-                                  ? AppColors.black
-                                  : AppColors.grey),
-                          Text(' SSD MobileNet',
-                              style: AppTextStyles.regularTextStyle(
-                                  color: !viewModel.state.isSSDMobileNet()
-                                      ? AppColors.black
-                                      : AppColors.grey)),
-                        ],
-                      )),
-                  PopupMenuItem(
-                      enabled: !viewModel.state.isMobileNet(),
-                      value: ModelType.MobileNet,
-                      child: Row(
-                        children: <Widget>[
-                          Icon(Icons.api,
-                              color: !viewModel.state.isMobileNet()
-                                  ? AppColors.black
-                                  : AppColors.grey),
-                          Text(' MobileNet',
-                              style: AppTextStyles.regularTextStyle(
-                                  color: !viewModel.state.isMobileNet()
-                                      ? AppColors.black
-                                      : AppColors.grey)),
-                        ],
-                      )),
-                  PopupMenuItem(
-                      enabled: !viewModel.state.isPoseNet(),
-                      value: ModelType.PoseNet,
-                      child: Row(
-                        children: <Widget>[
-                          Icon(Icons.api,
-                              color: !viewModel.state.isPoseNet()
-                                  ? AppColors.black
-                                  : AppColors.grey),
-                          Text(' PoseNet',
-                              style: AppTextStyles.regularTextStyle(
-                                  color: !viewModel.state.isPoseNet()
-                                      ? AppColors.black
-                                      : AppColors.grey)),
-                        ],
-                      )),
-                ]),
+        ElevatedButton(onPressed: () {}, child: const Icon(Icons.question_mark_rounded,color: Colors.white,), style: ElevatedButton.styleFrom( // styling the button
+             shape: const CircleBorder(),
+             backgroundColor: Colors.green, // Button color
+             foregroundColor: Colors.cyan, // Splash color
+           ),),
+        // PopupMenuButton<ModelType>(
+        //     onSelected: (item) => handleSwitchSource(item),
+        //     color: AppColors.white,
+        //     itemBuilder: (context) => [
+        //           PopupMenuItem(
+        //               enabled: !viewModel.state.isYolo(),
+        //               value: ModelType.YOLO,
+        //               child: Row(
+        //                 children: <Widget>[
+        //                   Icon(Icons.api,
+        //                       color: !viewModel.state.isYolo()
+        //                           ? AppColors.black
+        //                           : AppColors.grey),
+        //                   Text(' YOLO',
+        //                       style: AppTextStyles.regularTextStyle(
+        //                           color: !viewModel.state.isYolo()
+        //                               ? AppColors.black
+        //                               : AppColors.grey)),
+        //                 ],
+        //               )),
+        //           PopupMenuItem(
+        //               enabled: !viewModel.state.isSSDMobileNet(),
+        //               value: ModelType.SSDMobileNet,
+        //               child: Row(
+        //                 children: <Widget>[
+        //                   Icon(Icons.api,
+        //                       color: !viewModel.state.isSSDMobileNet()
+        //                           ? AppColors.black
+        //                           : AppColors.grey),
+        //                   Text(' SSD MobileNet',
+        //                       style: AppTextStyles.regularTextStyle(
+        //                           color: !viewModel.state.isSSDMobileNet()
+        //                               ? AppColors.black
+        //                               : AppColors.grey)),
+        //                 ],
+        //               )),
+        //           PopupMenuItem(
+        //               enabled: !viewModel.state.isMobileNet(),
+        //               value: ModelType.MobileNet,
+        //               child: Row(
+        //                 children: <Widget>[
+        //                   Icon(Icons.api,
+        //                       color: !viewModel.state.isMobileNet()
+        //                           ? AppColors.black
+        //                           : AppColors.grey),
+        //                   Text(' MobileNet',
+        //                       style: AppTextStyles.regularTextStyle(
+        //                           color: !viewModel.state.isMobileNet()
+        //                               ? AppColors.black
+        //                               : AppColors.grey)),
+        //                 ],
+        //               )),
+        //           PopupMenuItem(
+        //               enabled: !viewModel.state.isPoseNet(),
+        //               value: ModelType.PoseNet,
+        //               child: Row(
+        //                 children: <Widget>[
+        //                   Icon(Icons.api,
+        //                       color: !viewModel.state.isPoseNet()
+        //                           ? AppColors.black
+        //                           : AppColors.grey),
+        //                   Text(' PoseNet',
+        //                       style: AppTextStyles.regularTextStyle(
+        //                           color: !viewModel.state.isPoseNet()
+        //                               ? AppColors.black
+        //                               : AppColors.grey)),
+        //                 ],
+        //               )),
+        //         ]),
       ],
-      backgroundColor: AppColors.blue,
-      title: Text(
-        AppStrings.title,
-        style: AppTextStyles.boldTextStyle(
-            color: AppColors.white, fontSize: AppFontSizes.large),
+      backgroundColor: Colors.teal,
+      automaticallyImplyLeading: false,
+      title: Align(
+        alignment: Alignment.bottomLeft,
+        child: Text(
+          AppStrings.title,
+          style: AppTextStyles.boldTextStyle(
+              color: AppColors.white, fontSize: AppFontSizes.large),
+        ),
       ),
     );
   }

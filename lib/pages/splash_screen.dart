@@ -46,11 +46,17 @@ class _SplashScreenState extends State<SplashScreen>
     return Container(
       alignment: Alignment.center,
       color: AppColors.white,
-      padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
+      padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 50.0),
       child: ScaleTransition(
         scale: _animation,
         alignment: Alignment.center,
-        child: const Image(image: AssetImage('assets/images/logo.png')),
+        child: const Column(
+          children: [
+            SizedBox(height: 50,),
+            Expanded(child: Image(image: AssetImage('assets/images/hust.png'))),
+            Expanded(flex: 2,child: Image(image: AssetImage('assets/images/seee.jpg'))),
+          ],
+        ),
       ),
     );
   }
